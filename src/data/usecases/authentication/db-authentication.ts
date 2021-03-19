@@ -14,7 +14,7 @@ export class DbAuthentication implements Authentication {
     const account = await this.loadAccountByEmailRepository.load(authentication.email)
     if (account) {
       await this.hashCompare.compare(authentication.password, account.password)
-      this.tokenGenerator.generate(account.id)
+      await this.tokenGenerator.generate(account.id)
     }
     return ''
   }
