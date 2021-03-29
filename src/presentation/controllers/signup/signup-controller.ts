@@ -19,7 +19,6 @@ export class SingUpController implements Controller {
         email,
         password
       })
-      account.name = 'Teste'
       return ok(account)
     } catch (error) {
       console.error(error)
