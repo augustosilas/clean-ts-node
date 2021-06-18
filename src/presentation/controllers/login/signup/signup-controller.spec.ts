@@ -1,12 +1,12 @@
 import { SingUpController } from './signup-controller'
 import { EmailInUseError, MissingParamError, ServerError } from '@/presentation/errors'
-import { AccountModel, AddAccount, AddAccountModel, Authentication, AuthenticationModel, Validation } from './signup-controller-protocols'
+import { AccountModel, AddAccount, AddAccountParams, Authentication, AuthenticationParams, Validation } from './signup-controller-protocols'
 import { HttpRequest } from '@/presentation/protocols'
 import { ok, serverError, badRequest, forbidden } from '@/presentation/helpers/http/http-helpers'
 
 const makeAddAccount = (): AddAccount => {
   class AddAccountStub implements AddAccount {
-    async add (account: AddAccountModel): Promise<AccountModel | null> {
+    async add (account: AddAccountParams): Promise<AccountModel | null> {
       return await new Promise(resolve => resolve(makeFakeAccount()))
     }
   }
@@ -15,7 +15,7 @@ const makeAddAccount = (): AddAccount => {
 
 const makeAuthentication = (): Authentication => {
   class AuthenticationStub implements Authentication {
-    async auth (authentication: AuthenticationModel): Promise<string> {
+    async auth (authentication: AuthenticationParams): Promise<string> {
       return new Promise(resolve => resolve('any_token'))
     }
   }
