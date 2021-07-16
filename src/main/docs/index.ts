@@ -1,6 +1,6 @@
+import { badRequest, serverError, unauthorized, notFound } from './components'
 import { loginPath } from './paths/login-path'
-import { accountSchema } from './schemas/account-schema'
-import { loginParamsSchema } from './schemas/login-params-schema'
+import { accountSchema, errorSchema, loginParamsSchema } from './schemas'
 
 export default {
   openapi: '3.0.0',
@@ -8,6 +8,10 @@ export default {
     title: 'Clean Node API',
     description: 'API do curso do mango para realizar enquete entre programadores',
     version: '1.0.0'
+  },
+  license: {
+    name: 'MIT',
+    url: ''
   },
   servers: [{
     url: '/api'
@@ -20,6 +24,13 @@ export default {
   },
   schemas: {
     account: accountSchema,
-    loginParams: loginParamsSchema
+    loginParams: loginParamsSchema,
+    error: errorSchema
+  },
+  components: {
+    badRequest,
+    serverError,
+    unauthorized,
+    notFound
   }
 }

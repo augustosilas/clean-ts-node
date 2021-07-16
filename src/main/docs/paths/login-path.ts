@@ -23,14 +23,16 @@ export const loginPath = {
         }
       },
       400: {
-        description: 'Sucesso',
-        content: {
-          'application/json': {
-            schema: {
-              $ref: '#/schemas/account'
-            }
-          }
-        }
+        $ref: '#/schemas/badRequest'
+      },
+      401: {
+        $ref: '#/schemas/unauthorized'
+      },
+      404: {
+        $ref: '#/schemas/notFound'
+      },
+      500: {
+        $ref: '#/schemas/serverError'
       }
     }
   }
