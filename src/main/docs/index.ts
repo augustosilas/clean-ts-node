@@ -16,9 +16,13 @@ export default {
   servers: [{
     url: '/api'
   }],
-  tags: [{
-    name: 'Login'
-  }],
+  tags: [
+    {
+      name: 'Login'
+    },
+    {
+      name: 'Enquete'
+    }],
   pats: {
     '/login': loginPath
   },
